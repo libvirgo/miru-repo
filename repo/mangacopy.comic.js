@@ -107,7 +107,8 @@ export default class extends Extension {
       // eval(cryptojs);
   
       const res = await this.request(`/comicdetail/${url}/chapters`);
-  
+
+      console.log(`res: ${JSON.stringify(res)}`);
       let results = res.results;
       console.log("密文"+results);
       let iv = results.substring(0, 16);
