@@ -109,7 +109,7 @@ export default class extends Extension {
       const res = await this.request(`/comicdetail/${url}/chapters`);
   
       let results = res.results;
-      // console.log("密文"+results);
+      console.log("密文"+results);
       let iv = results.substring(0, 16);
       results = results.replace(iv, "");
       let key = "xxxmanga.woo.key";
@@ -118,7 +118,7 @@ export default class extends Extension {
       let minyMin = this.CryptoJS.enc.Base64.stringify(value);
   
       let result = this.decodeUnicode(this.Decrypt(minyMin, key, iv));
-      // console.log(result);
+      console.log(result);
       result = JSON.parse(result);
   
       let chapters = result["groups"]["default"]["chapters"];
@@ -131,10 +131,11 @@ export default class extends Extension {
           url: url + "#" + chapters[i]["id"],
         });
       }
-      // console.log(urls_);
+      console.log(urls_);
+      console.log(`request: /api/v3/comic2/${url}?platform=1`);
       const detail_info = await this.request(`/api/v3/comic2/${url}?platform=1`);
   
-      // console.log(detail_info);
+      console.log(detail_info);
       return {
         title: detail_info.results.comic.name,
         cover: detail_info.results.comic.cover,
