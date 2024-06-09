@@ -105,7 +105,8 @@ export default class extends Extension {
       // const cryptojs =await (await fetch("https://raw.githubusercontent.com/Fantuan-cell/XsRead/main/util/cryptojs.js")).text();
       // console.log(cryptojs);
       // eval(cryptojs);
-  
+
+      console.log(`request to: /comicdetail/${url}/chapters`);
       const res = await this.request(`/comicdetail/${url}/chapters`);
 
       console.log(`res: ${JSON.stringify(res)}`);
